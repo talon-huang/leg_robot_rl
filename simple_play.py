@@ -128,7 +128,7 @@ def play(args):
 
     video.release()
 if __name__ == '__main__':
-    task_registry.register("Titatit",LeggedRobot,TitatiConstraintHimRoughCfg(),TitatiConstraintHimRoughCfgPPO())
+    task_registry.register("cyberdog2",LeggedRobot,TitatiConstraintHimRoughCfg(),TitatiConstraintHimRoughCfgPPO())
 
     RECORD_FRAMES = True
     args = get_args()

@@ -41,8 +41,12 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
         num_observations = n_proprio + n_scan + history_len*n_proprio + n_priv_latent
 
     class init_state( LeggedRobotCfg.init_state ):
-        pos = [0.0, 0.0, 0.34] # x,y,z [m]
 
+        pos = [0.0, 0.0, 0.25] # x,y,z [m]
+        rot = [0, 0.0, 0.0, 1]  # x, y, z, w [quat]
+        lin_vel = [0.0, 0.0, 0.0]  # x, y, z [m/s]
+        ang_vel = [0.0, 0.0, 0.0]  # x, y, z [rad/s]   
+           
         default_joint_angles = { # = target angles [rad] when action = 0.0
             'FL_hip_joint': 0.0,   # [rad]
             'RL_hip_joint': 0.0,   # [rad]
@@ -50,14 +54,14 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
             'RR_hip_joint': -0.0,   # [rad]
 
             'FL_thigh_joint': 0.8,     # [rad]
-            'RL_thigh_joint': -1.,   # [rad]
+            'RL_thigh_joint': 0.8,   # [rad]
             'FR_thigh_joint': 0.8,     # [rad]
-            'RR_thigh_joint': -1.,   # [rad]
+            'RR_thigh_joint': 0.8,   # [rad]
 
             'FL_calf_joint': -1.5,   # [rad]
-            'RL_calf_joint': 1.5,    # [rad]
+            'RL_calf_joint': -1.5,    # [rad]
             'FR_calf_joint': -1.5,  # [rad]
-            'RR_calf_joint': 1.5,    # [rad]
+            'RR_calf_joint': -1.5,    # [rad]
 
             # 'FL_knee_joint': 0.8,     # [rad]
             # 'RL_knee_joint': -1.,   # [rad]
@@ -76,8 +80,8 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
     class control( LeggedRobotCfg.control ):
         # PD Drive parameters:
         control_type = 'P'
-        stiffness = {'joint': 40.}  # [N*m/rad]
-        damping = {'joint': 1.2}     # [N*m*s/rad]
+        stiffness = {'joint': 25.}  # [N*m/rad]
+        damping = {'joint': 0.5}     # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT
@@ -102,8 +106,8 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
 
     class asset( LeggedRobotCfg.asset ):
         
-        file = '{ROOT_DIR}/resources/titati/urdf/titati_description.urdf'
-        # file = '{ROOT_DIR}/resources/cyberdog2/urdf/cyberdog2.urdf'
+        # file = '{ROOT_DIR}/resources/titati/urdf/titati_description.urdf'
+        file = '{ROOT_DIR}/resources/cyberdog2/urdf/cyberdog2.urdf'
 
         foot_name = "foot"
         name = "cyberdog2"
@@ -113,7 +117,7 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
         # penalize_contacts_on = ["RR_knee", "RL_knee", "FR_knee", "FL_knee"]
         # terminate_after_contacts_on = ["body"]
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
-        flip_visual_attachments = True
+        flip_visual_attachments = False
   
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9
@@ -325,8 +329,8 @@ class TitatiConstraintHimRoughCfgPPO( LeggedRobotCfgPPO ):
         imi_flag = True
       
     class runner( LeggedRobotCfgPPO.runner ):
-        run_name = 'test_barlowtwins_feetcontact'
-        experiment_name = 'rough_titati_constraint'
+        run_name = 'cyberdog2_feetcontact'
+        experiment_name = 'cyberdog2'
         policy_class_name = 'ActorCriticBarlowTwins'
         # policy_class_name = 'ActorCriticTransBarlowTwins'
         runner_class_name = 'OnConstraintPolicyRunner'

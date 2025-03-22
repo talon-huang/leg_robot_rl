@@ -16,7 +16,7 @@ def train(args):
 
 if __name__ == '__main__':
 
-    task_registry.register("Titatit",LeggedRobot,TitatiConstraintHimRoughCfg(),TitatiConstraintHimRoughCfgPPO())
+    task_registry.register("cyberdog2",LeggedRobot,TitatiConstraintHimRoughCfg(),TitatiConstraintHimRoughCfgPPO())
 
     args = get_args()
     train(args)
