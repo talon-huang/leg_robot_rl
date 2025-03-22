@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="titatit_robot_2">
+  name="cyberdog2">
   <link
     name="base">
     <visual>
@@ -73,6 +73,8 @@
       link="FL_hip" />
     <axis
       xyz="1 0 0" />
+          <dynamics damping="0.01" friction="0.1"/>
+
     <limit effort="12.0001" lower="-0.6806784082777885" upper="0.6806784082777885" velocity="30.9971"/>
   </joint>
   <link
@@ -92,12 +94,12 @@
           rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision> -->
       <!-- <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.06"/>
       <geometry>
         <box size="0.12 0.025 0.034"/>
       </geometry> -->
-    </collision>
+    <!-- </collision> -->
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00212 -0.0212 -0.0184"/>
       <mass value="0.482"/>
@@ -111,20 +113,20 @@
     <parent link="FL_hip"/>
     <child link="FL_thigh"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-1.3264502315156903" upper="2.792526803190927" velocity="30.9971"/>
   </joint>
   <link
     name="FL_calf">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <!-- <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/knee.stl" scale="1 1 1"/>
-      </geometry>
-        <!-- <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
+      </geometry> -->
+        <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
       <geometry>
         <box size="0.016 0.016 0.18341"/>
-      </geometry> -->
+      </geometry>
       <material
         name="">
         <color
@@ -164,7 +166,7 @@
     <parent link="FL_thigh"/>
     <child link="FL_calf"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-2.5307274153917776" upper="-0.5235987755982988" velocity="30.9971"/>
   </joint>
   <link
@@ -186,7 +188,7 @@
           filename="../dae/FL_foot.dae" />
       </geometry> -->
       <geometry>
-        <sphere radius="0.01"/>
+        <sphere radius="0.02"/>
       </geometry>
       <material
         name="">
@@ -258,6 +260,7 @@
       link="FR_hip" />
     <axis
       xyz="1 0 0" />
+          <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-0.6806784082777885" upper="0.6806784082777885" velocity="30.9971"/>
   </joint>
   <link
@@ -278,12 +281,12 @@
           rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision> -->
       <!-- <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.06"/>
       <geometry>
         <box size="0.12 0.025 0.034"/>
       </geometry> -->
-    </collision>
+    <!-- </collision> -->
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00212 0.0212 -0.0184"/>
       <mass value="0.482"/>
@@ -297,20 +300,20 @@
     <parent link="FR_hip"/>
     <child link="FR_thigh"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-1.3264502315156903" upper="2.792526803190927" velocity="30.9971"/>
   </joint>
   <link
     name="FR_calf">
   <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <!-- <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/knee.stl" scale="1 1 1"/>
-      </geometry>
-            <!-- <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
+      </geometry> -->
+            <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
       <geometry>
         <box size="0.016 0.016 0.18341"/>
-      </geometry> -->
+      </geometry>
       <material
         name="">
         <color
@@ -350,7 +353,7 @@
     <parent link="FR_thigh"/>
     <child link="FR_calf"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-2.5307274153917776" upper="-0.5235987755982988" velocity="30.9971"/>
   </joint>
   <link
@@ -372,7 +375,7 @@
           filename="../dae/FR_foot.dae" />
       </geometry> -->
       <geometry>
-        <sphere radius="0.01"/>
+        <sphere radius="0.02"/>
       </geometry>
       <material
         name="">
@@ -442,7 +445,7 @@
     <parent link="base"/>
     <child link="RL_hip"/>
     <axis xyz="1 0 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-0.6806784082777885" upper="0.6806784082777885" velocity="30.9971"/>
   </joint>
   <link
@@ -462,12 +465,12 @@
           rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision> -->
       <!-- <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.06"/>
       <geometry>
         <box size="0.12 0.025 0.034"/>
       </geometry> -->
-    </collision>
+    <!-- </collision> -->
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00212 -0.0212 -0.0184"/>
       <mass value="0.482"/>
@@ -481,21 +484,21 @@
     <parent link="RL_hip"/>
     <child link="RL_thigh"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <!-- <limit effort="100" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/> -->
     <limit effort="12.0001" lower="-0.9773843811168246" upper="3.141592653589793" velocity="30.9971"/>
   </joint>
   <link
     name="RL_calf">
   <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <!-- <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/knee.stl" scale="1 1 1"/>
-      </geometry>
-            <!-- <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
+      </geometry> -->
+            <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
       <geometry>
         <box size="0.016 0.016 0.18341"/>
-      </geometry> -->
+      </geometry>
       <material
         name="">
         <color
@@ -535,7 +538,7 @@
     <parent link="RL_thigh"/>
     <child link="RL_calf"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <!-- <limit effort="100" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/> -->
     <limit effort="12.0001" lower="-2.5307274153917776" upper="-0.5235987755982988" velocity="30.9971"/>
   </joint>
@@ -558,7 +561,7 @@
           filename="../dae/RL_foot.dae" />
       </geometry> -->
       <geometry>
-        <sphere radius="0.01"/>
+        <sphere radius="0.02"/>
       </geometry>
       <material
         name="">
@@ -622,7 +625,7 @@
     <parent link="base"/>
     <child link="RR_hip"/>
     <axis xyz="1 0 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <limit effort="12.0001" lower="-0.6806784082777885" upper="0.6806784082777885" velocity="30.9971"/>
   </joint>
   <link
@@ -642,12 +645,12 @@
           rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision> -->
       <!-- <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.06"/>
       <geometry>
         <box size="0.12 0.025 0.034"/>
       </geometry> -->
-    </collision>
+    <!-- </collision> -->
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00212 0.0212 -0.0184"/>
       <mass value="0.482"/>
@@ -661,21 +664,21 @@
     <parent link="RR_hip"/>
     <child link="RR_thigh"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <!-- <limit effort="100" lower="-1.0471975512" upper="4.18879020479" velocity="28.6"/> -->
     <limit effort="12.0001" lower="-0.9773843811168246" upper="3.141592653589793" velocity="30.9971"/>
   </joint>
   <link
     name="RR_calf">
    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <!-- <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="../meshes/knee.stl" scale="1 1 1"/>
-      </geometry>
-            <!-- <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
+      </geometry> -->
+            <origin rpy="0 3.141592653589793 0" xyz="0 0 -0.091705"/>
       <geometry>
         <box size="0.016 0.016 0.18341"/>
-      </geometry> -->
+      </geometry>
       <material
         name="">
         <color
@@ -715,7 +718,7 @@
     <parent link="RR_thigh"/>
     <child link="RR_calf"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0" friction="0"/>
+    <dynamics damping="0.01" friction="0.1"/>
     <!-- <limit effort="100" lower="-2.69653369433" upper="-0.916297857297" velocity="28.6"/> -->
     <limit effort="12.0001" lower="-2.5307274153917776" upper="-0.5235987755982988" velocity="30.9971"/>
   </joint>
@@ -738,7 +741,7 @@
           filename="../dae/RR_foot.dae" />
       </geometry> -->
       <geometry>
-        <sphere radius="0.01"/>
+        <sphere radius="0.02"/>
       </geometry>
       <material
         name="">

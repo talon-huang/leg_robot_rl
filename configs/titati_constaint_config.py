@@ -42,21 +42,21 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
 
     class init_state( LeggedRobotCfg.init_state ):
 
-        pos = [0.0, 0.0, 0.25] # x,y,z [m]
+        pos = [0.0, 0.0, 0.2] # x,y,z [m]
         rot = [0, 0.0, 0.0, 1]  # x, y, z, w [quat]
         lin_vel = [0.0, 0.0, 0.0]  # x, y, z [m/s]
         ang_vel = [0.0, 0.0, 0.0]  # x, y, z [rad/s]   
            
         default_joint_angles = { # = target angles [rad] when action = 0.0
-            'FL_hip_joint': 0.0,   # [rad]
-            'RL_hip_joint': 0.0,   # [rad]
-            'FR_hip_joint': -0.0 ,  # [rad]
-            'RR_hip_joint': -0.0,   # [rad]
+            'FL_hip_joint': 0.1,   # [rad]
+            'RL_hip_joint': 0.1,   # [rad]
+            'FR_hip_joint': -0.1 ,  # [rad]
+            'RR_hip_joint': -0.1,   # [rad]
 
             'FL_thigh_joint': 0.8,     # [rad]
-            'RL_thigh_joint': 0.8,   # [rad]
+            'RL_thigh_joint': 1.,   # [rad]
             'FR_thigh_joint': 0.8,     # [rad]
-            'RR_thigh_joint': 0.8,   # [rad]
+            'RR_thigh_joint': 1.,   # [rad]
 
             'FL_calf_joint': -1.5,   # [rad]
             'RL_calf_joint': -1.5,    # [rad]
@@ -80,7 +80,7 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
     class control( LeggedRobotCfg.control ):
         # PD Drive parameters:
         control_type = 'P'
-        stiffness = {'joint': 25.}  # [N*m/rad]
+        stiffness = {'joint': 20.}  # [N*m/rad]
         damping = {'joint': 0.5}     # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
@@ -99,10 +99,10 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
         global_reference = False
 
         class ranges:
-            lin_vel_x = [-0.5, 0.5]  # min max [m/s]
-            lin_vel_y = [-0.5, 0.5]  # min max [m/s]
-            ang_vel_yaw = [-0.5, 0.5]  # min max [rad/s]
-            heading = [-1.57, 1.57]
+            lin_vel_x = [-1.0, 1.0]  # min max [m/s]
+            lin_vel_y = [-1.0, 1.0]  # min max [m/s]
+            ang_vel_yaw = [-1, 1]  # min max [rad/s]
+            heading = [-3.14, 3.14]
 
     class asset( LeggedRobotCfg.asset ):
         
@@ -121,7 +121,7 @@ class TitatiConstraintHimRoughCfg( LeggedRobotCfg ):
   
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9
-        base_height_target = 0.34
+        base_height_target = 0.2
         class scales( LeggedRobotCfg.rewards.scales ):
             # torques = -0.0001
             # termination = 0.0
